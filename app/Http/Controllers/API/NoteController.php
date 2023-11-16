@@ -65,6 +65,7 @@ class NoteController extends Controller
      *      path="/api/notes",
      *      operationId="getNotesList",
      *      tags={"Notes"},
+     *      security={{"passport": {"*"}}},
      *      summary="Get list of notes",
      *      description="Returns list of notes",
      *      @OA\Response(
@@ -105,15 +106,9 @@ class NoteController extends Controller
      *      path="/api/notes",
      *      operationId="storeNote",
      *      tags={"Notes"},
+     *      security={{"passport": {"*"}}},
      *      summary="Store new note",
      *      description="Returns note data",
-     *     @OA\Parameter(
-     *         name="text",
-     *         in="query",
-     *         description="Note text",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
      *      @OA\RequestBody(
      *         required=true,
      *         @OA\MediaType(
@@ -161,6 +156,7 @@ class NoteController extends Controller
      *      path="/api/notes/{id}",
      *      operationId="getNoteById",
      *      tags={"Notes"},
+     *      security={{"passport": {"*"}}},
      *      summary="Get note information",
      *      description="Returns note data",
      *      @OA\Parameter(
@@ -211,6 +207,7 @@ class NoteController extends Controller
      *      path="/api/notes/{id}",
      *      operationId="updateNote",
      *      tags={"Notes"},
+     *      security={{"passport": {"*"}}},
      *      summary="Update existing note",
      *      description="Returns updated note data",
      *      @OA\Parameter(
@@ -275,6 +272,7 @@ class NoteController extends Controller
      *      path="/api/notes/{id}",
      *      operationId="deleteNote",
      *      tags={"Notes"},
+     *      security={{"passport": {"*"}}},
      *      summary="Delete existing note",
      *      description="Deletes a record and returns no content",
      *      @OA\Parameter(

@@ -170,7 +170,14 @@
                     "401": {
                         "description": "Unauthenticated"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -179,17 +186,6 @@
                 "summary": "Store new note",
                 "description": "Returns note data",
                 "operationId": "storeNote",
-                "parameters": [
-                    {
-                        "name": "text",
-                        "in": "query",
-                        "description": "Note text",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -221,7 +217,14 @@
                     "401": {
                         "description": "Unauthenticated"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
             }
         },
         "/api/notes/{id}": {
@@ -263,7 +266,14 @@
                     "404": {
                         "description": "Resource Not Found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
             },
             "put": {
                 "tags": [
@@ -286,7 +296,7 @@
                 "requestBody": {
                     "required": true,
                     "content": {
-                        "multipart/form-data": {
+                        "application/x-www-form-urlencoded": {
                             "schema": {
                                 "properties": {
                                     "text": {
@@ -313,7 +323,14 @@
                     "404": {
                         "description": "Resource Not Found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -346,7 +363,14 @@
                     "404": {
                         "description": "Resource Not Found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
             }
         }
     },
@@ -427,6 +451,22 @@
                     }
                 },
                 "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "passport": {
+                "type": "oauth2",
+                "description": "Laravel passport oauth2 security.",
+                "in": "header",
+                "scheme": "http",
+                "flows": {
+                    "password": {
+                        "authorizationUrl": "http://localhost/oauth/authorize",
+                        "tokenUrl": "http://localhost/oauth/token",
+                        "refreshUrl": "http://localhost/token/refresh",
+                        "scopes": []
+                    }
+                }
             }
         }
     },
